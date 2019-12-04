@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Quotes } from '../quotes';
+import { Quote } from '../quotes';
 
 @Component({
   selector: 'app-quotes-detail',
@@ -15,7 +15,7 @@ export class QuotesDetailComponent implements OnInit {
   dislikebuttonclick(){
     this.numberofdislikes++;
   }
-  @Input () quotes: Quotes;
+  @Input () quotes: Quote;
   @Output() isComplete = new EventEmitter<boolean>();
 
   quotesDelete(complete:boolean){
