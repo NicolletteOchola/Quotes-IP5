@@ -1,1 +1,24 @@
-<p>quotes works!</p>
+<div class="container">
+  <h1>My Quotes</h1>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngFor='let quotes of quotes;let i = index'>
+        <div>
+          <h4 id={{i}} appStrikethrough>{{quotes.name}} posted {{quotes.completeDate|timeAgo}}</h4>
+          <div class="details">
+            <button (click)='toggleDetails(i)' class="btn btn-outline-primary">Details</button>
+          </div>
+        </div>
+
+        <div *ngIf='quotes.showDescription'>
+          <app-quotes-detail  [quotes]='quotes' (isComplete) = 'deleteQuotes($event,i)'></app-quotes-detail>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <app-quotes-form (addQuotes)="addNewQuotes($event)"></app-quotes-form>
+    </div>
+  </div>
+</div>
